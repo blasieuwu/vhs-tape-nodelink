@@ -6,7 +6,7 @@ export default {
     useBunServer: false // set to true to use Bun.serve websocket (experimental)
   },
   cluster: {
-    enabled: true, // active cluster (or use env CLUSTER_ENABLED)
+    enabled: false, // active cluster (or use env CLUSTER_ENABLED)
     workers: 0, // 0 => uses os.cpus().length, or specify a number (1 = 2 processes total: master + 1 worker)
     minWorkers: 1, // Minimum workers to keep alive (improves availability during bursts)
     runtime: {
