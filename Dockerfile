@@ -29,6 +29,7 @@ COPY --from=builder /app/node_modules ./node_modules
 # This includes the 'src' directory, default config, and package files for runtime information.
 COPY src/ ./src/
 COPY config.default.js ./config.default.js
+COPY config.js ./config.js
 COPY package.json ./package.json
 
 # Expose the port the application listens on (default is 3000 from config.default.js)
