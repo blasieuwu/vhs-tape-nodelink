@@ -72,7 +72,7 @@ export default {
     }
   },
   connection: {
-    logAllChecks: false,
+    logAllChecks: true,
     interval: 300000, // 5 minutes
     timeout: 10000, // 10 seconds
     thresholds: {
@@ -88,12 +88,12 @@ export default {
   eventTimeoutMs: 15000,
   zombieThresholdMs: 60000,
   enableHoloTracks: false,
-  enableTrackStreamEndpoint: false,
-  enableLoadStreamEndpoint: false,
+  enableTrackStreamEndpoint: true,
+  enableLoadStreamEndpoint: true,
   resolveExternalLinks: false,
   fetchChannelInfo: false,
   sponsorblock: {
-    enabled: false,
+    enabled: true,
     api: 'https://sponsor.ajay.app',
     categories: [
       'sponsor',
@@ -603,7 +603,7 @@ export default {
     ipBlocks: []
   },
   rateLimit: {
-    enabled: true,
+    enabled: false,
     global: {
       maxRequests: 1000,
       timeWindowMs: 60000 // 1 minute
@@ -628,7 +628,7 @@ export default {
     }
   },
   dosProtection: {
-    enabled: true,
+    enabled: false,
     thresholds: {
       burstRequests: 50,
       timeWindowMs: 10000 // 10 seconds
