@@ -6,8 +6,8 @@ export default {
     useBunServer: false // set to true to use Bun.serve websocket (experimental)
   },
   cluster: {
-    enabled: false, // active cluster (or use env CLUSTER_ENABLED)
-    workers: 0, // 0 => uses os.cpus().length, or specify a number (1 = 2 processes total: master + 1 worker)
+    enabled: true, // active cluster (or use env CLUSTER_ENABLED)
+    workers: 1, // 0 => uses os.cpus().length, or specify a number (1 = 2 processes total: master + 1 worker)
     minWorkers: 1, // Minimum workers to keep alive (improves availability during bursts)
     runtime: {
       workerMaxOldSpaceMb: 0, // 0 disables override; set >0 to pass --max-old-space-size to playback workers
@@ -511,69 +511,58 @@ export default {
     }
   },
   audio: {
-    quality: 'high', // high, medium, low, lowest
+    quality: 'high', 
     encryption: 'aead_aes256_gcm_rtpsize',
-    resamplingQuality: 'best', // best, medium, fastest, zero order holder, linear
-    loudnessNormalizer: false, // Enable/disable AGC globally
-    lookaheadMs: 5, // Limiter lookahead buffer in milliseconds
-    gateThresholdLUFS: -60, // Silence threshold for AGC gate
+    resamplingQuality: 'medium', // drop to medium to save CPU and prevent audio stuttering
+    loudnessNormalizer: true, // enable to normalize loud/quiet tracks (great for soundcloud/youtube mixes)
+    lookaheadMs: 5, 
+    gateThresholdLUFS: -60, 
     fading: {
-      enabled: false, // Master switch for all fades
-      // type meanings:
-      // volume = only amplitude fades, tape = pitch/speed ramps, both = simultaneous fade and ramp, scratch = physical vinyl simulation
-      // curve meanings:
-      // linear = constant rate, exponential = slow start then faster, sinusoidal = smooth s-curve, start/wash/stop/random/baby = scratch specific movements
+      enabled: true, // enable master switch for smooth vhs-style transitions
       trackStart: {
-        // Effect when a new track begins
-        duration: 0, // ms
-        curve: 'linear',
-        type: 'volume' // volume, tape, both
+        duration: 1500, // 1.5 second fade in
+        curve: 'sinusoidal',
+        type: 'volume' 
       },
       trackEnd: {
-        // Effect triggered automatically before track finishes
-        duration: 0,
-        curve: 'linear',
+        duration: 2000, // 2 second fade out
+        curve: 'sinusoidal',
         type: 'volume'
       },
       trackStop: {
-        // Effect when manually stopping or skipping
-        duration: 0,
+        duration: 1000,
         curve: 'linear',
         type: 'volume'
       },
       seek: {
-        // Effect applied after a seek operation
-        duration: 0,
+        duration: 500,
         curve: 'linear',
         type: 'volume'
       },
       pause: {
-        // Effect applied when pausing playback
-        duration: 0,
+        duration: 800,
         curve: 'sinusoidal',
-        type: 'tape'
+        type: 'tape' // gives that cool pitch-down effect when pausing
       },
       resume: {
-        // Effect applied when resuming from pause
-        duration: 0,
+        duration: 800,
         curve: 'sinusoidal',
-        type: 'tape'
+        type: 'tape' // pitch-up effect when resuming
       },
       ducking: {
-        // Partial fade out for overlay events (e.g., TTS, notifications)
         enabled: false,
-        duration: 0, // ms
-        targetVolume: 0.3, // Volume multiplier (0.3 = 30%)
+        duration: 0, 
+        targetVolume: 0.3, 
         curve: 'linear'
       }
     },
     crossfade: {
-      enabled: false,
-      duration: 0, // Crossfade duration in milliseconds
-      curve: 'sinusoidal', // linear | sine | sinusoidal
-      mode: 'preload', // preload or stream
-      minBufferMs: 250, // Minimum buffered PCM before crossfade starts
-      bufferMs: 0 // 0 = auto (use duration)
+      enabled: true, // eliminate dead air between songs
+      duration: 3000, // 3 second overlap
+      curve: 'sinusoidal', 
+      mode: 'preload', 
+      minBufferMs: 250, 
+      bufferMs: 0 
     }
   },
   voiceReceive: {
