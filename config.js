@@ -86,7 +86,7 @@ export default {
   statsUpdateInterval: 30000,
   trackStuckThresholdMs: 10000,
   eventTimeoutMs: 15000,
-  zombieThresholdMs: 0,
+  zombieThresholdMs: 600000,
   enableHoloTracks: false,
   enableTrackStreamEndpoint: true,
   enableLoadStreamEndpoint: true,
