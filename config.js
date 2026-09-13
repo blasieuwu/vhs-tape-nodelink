@@ -52,13 +52,13 @@ export default {
   logging: {
     level: 'debug',
     file: {
-      enabled: false,
+      enabled: true,
       path: 'logs',
       rotation: 'daily',
       ttlDays: 7
     },
     debug: {
-      all: false,
+      all: true,
       request: true,
       session: true,
       player: true,
@@ -67,7 +67,7 @@ export default {
       lyrics: true,
       youtube: true,
       'youtube-cipher': true,
-      sabr: false,
+      sabr: true,
       potoken: false
     }
   },
@@ -90,7 +90,7 @@ export default {
   enableHoloTracks: false,
   enableTrackStreamEndpoint: true,
   enableLoadStreamEndpoint: true,
-  resolveExternalLinks: false,
+  resolveExternalLinks: true,
   fetchChannelInfo: false,
   sponsorblock: {
     enabled: false,
@@ -126,8 +126,8 @@ export default {
       timescale: true
     }
   },
-  defaultSearchSource: ['youtube', 'soundcloud'],
-  unifiedSearchSources: ['youtube', 'soundcloud'],
+  defaultSearchSource: ['youtube', 'soundcloud', 'deezer', 'tidal'],
+  unifiedSearchSources: ['youtube', 'soundcloud', 'deezer', 'tidal'],
   sources: {
     vkmusic: {
       enabled: false,
@@ -165,6 +165,8 @@ export default {
         'youtubeMusic',
         'youtube',
         'soundcloud',
+        'tidal',
+        'deezer',
       ],
       fallbackToAny: true
     },
@@ -177,7 +179,7 @@ export default {
     deezer: {
       // arl: '',
       // decryptionKey: '',
-      enabled: false
+      enabled: true
     },
     bandcamp: {
       enabled: false
@@ -325,6 +327,8 @@ export default {
       ],
       fallbackSources: [
         'soundcloud',
+        'tidal',
+        'deezer',
       ], // Internal fallback chain when YouTube stream URL fails
       clients: {
         search: ['Android'], // Clients used for searching tracks
@@ -370,7 +374,7 @@ export default {
       enabled: true,
       clientId: '',
       clientSecret: '',
-      externalAuthUrl: 'https://github.com/topi314/spotify-tokener', // URL to external token provider (e.g. http://localhost:8080/api/token - use https://github.com/topi314/spotify-tokener or https://github.com/1Lucas1apk/gettoken | http://get.1lucas1apk.fun/spotify/gettoken)
+      externalAuthUrl: 'http://get.1lucas1apk.fun/spotify/gettoken', // URL to external token provider (e.g. http://localhost:8080/api/token - use https://github.com/topi314/spotify-tokener or https://github.com/1Lucas1apk/gettoken)
       market: 'US',
       playlistLoadLimit: 1, // 0 means no limit (loads all tracks), 1 = 100 tracks, 2 = 100 and so on!
       playlistPageLoadConcurrency: 10, // How many pages to load simultaneously
