@@ -86,7 +86,7 @@ export default {
   statsUpdateInterval: 30000,
   trackStuckThresholdMs: 10000,
   eventTimeoutMs: 15000,
-  zombieThresholdMs: 60000,
+  zombieThresholdMs: 0,
   enableHoloTracks: false,
   enableTrackStreamEndpoint: true,
   enableLoadStreamEndpoint: true,
@@ -126,8 +126,8 @@ export default {
       timescale: true
     }
   },
-  defaultSearchSource: ['youtube', 'soundcloud', 'deezer', 'tidal'],
-  unifiedSearchSources: ['youtube', 'soundcloud', 'deezer', 'tidal'],
+  defaultSearchSource: ['youtube', 'soundcloud', 'deezer', 'tidal', 'bandcamp'],
+  unifiedSearchSources: ['youtube', 'soundcloud', 'deezer', 'tidal', 'bandcamp'],
   sources: {
     vkmusic: {
       enabled: false,
@@ -182,7 +182,7 @@ export default {
       enabled: true
     },
     bandcamp: {
-      enabled: false
+      enabled: true
     },
     soundcloud: {
       enabled: true
@@ -329,6 +329,7 @@ export default {
         'soundcloud',
         'tidal',
         'deezer',
+        'bandcamp',
       ], // Internal fallback chain when YouTube stream URL fails
       clients: {
         search: ['Android'], // Clients used for searching tracks
@@ -473,7 +474,7 @@ export default {
   lyrics: {
     fallbackSource: 'genius',
     youtube: {
-      enabled: true
+      enabled: false
     },
     genius: {
       enabled: true
@@ -489,16 +490,16 @@ export default {
       enabled: true
     },
     letrasmus: {
-      enabled: true
+      enabled: false
     },
     bilibili: {
-      enabled: true
+      enabled: false
     },
     yandexmusic: {
-      enabled: true
+      enabled: false
     },
     monochrome: {
-      enabled: true
+      enabled: false
     }
   },
   meanings: {
