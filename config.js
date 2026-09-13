@@ -93,7 +93,7 @@ export default {
   resolveExternalLinks: false,
   fetchChannelInfo: false,
   sponsorblock: {
-    enabled: true,
+    enabled: false,
     api: 'https://sponsor.ajay.app',
     categories: [
       'sponsor',
@@ -130,7 +130,7 @@ export default {
   unifiedSearchSources: ['youtube', 'soundcloud'],
   sources: {
     vkmusic: {
-      enabled: true,
+      enabled: false,
       userToken: '', // (optional) get from vk in browser devtools -> reqs POST /?act=web_token HTTP/2 - headers -> response -> access_token
       userCookie: '', // (required without userToken) get from vk in browser devtools -> reqs POST /?act=web_token HTTP/2 - headers -> request -> cookie (copy full cookie header)
       proxy: {
@@ -140,17 +140,17 @@ export default {
       }
     },
     amazonmusic: {
-      enabled: true
+      enabled: false
     },
     bluesky: {
-      enabled: true
+      enabled: false
     },
     anghami: {
       enabled: false,
       cookies: '' // Optional: Useful for accessing restricted or private content
     },
     rss: {
-      enabled: true
+      enabled: false
     },
     songlink: {
       enabled: true,
@@ -164,32 +164,23 @@ export default {
         'appleMusic',
         'youtubeMusic',
         'youtube',
-        'deezer',
-        'tidal',
-        'amazonMusic',
         'soundcloud',
-        'bandcamp',
-        'audius',
-        'audiomack',
-        'pandora',
-        'itunes',
-        'amazonStore'
       ],
       fallbackToAny: true
     },
     mixcloud: {
-      enabled: true
+      enabled: false
     },
     audiomack: {
-      enabled: true
+      enabled: false
     },
     deezer: {
       // arl: '',
       // decryptionKey: '',
-      enabled: true
+      enabled: false
     },
     bandcamp: {
-      enabled: true
+      enabled: false
     },
     soundcloud: {
       enabled: true
@@ -237,30 +228,30 @@ export default {
     },
     vimeo: {
       // Note: not 100% of the songs are currently working (but most should.), because i need to code a different extractor for every year (2010, 2011, etc. not all are done)
-      enabled: true
+      enabled: false
     },
     iheartradio: {
-      enabled: true
+      enabled: false
     },
     telegram: {
-      enabled: true
+      enabled: false
     },
     shazam: {
-      enabled: true,
+      enabled: false,
       allowExplicit: true
     },
     bilibili: {
-      enabled: true,
+      enabled: false,
       sessdata: '' // Optional, improves access to some videos (premium and 4k+)
     },
     genius: {
-      enabled: true
+      enabled: false
     },
     pinterest: {
-      enabled: true
+      enabled: false
     },
     flowery: {
-      enabled: true,
+      enabled: false,
       voice: 'Salli',
       translate: false,
       silence: 0,
@@ -268,14 +259,14 @@ export default {
       enforceConfig: false
     },
     lazypytts: {
-      enabled: true,
+      enabled: false,
       service: 'Cerence',
       voice: 'Luciana',
       maxTextLength: 3000,
       enforceConfig: false
     },
     jiosaavn: {
-      enabled: true,
+      enabled: false,
       playlistLoadLimit: 50,
       artistLoadLimit: 20,
       proxy: {
@@ -286,7 +277,7 @@ export default {
       // "secretKey": "38346591" // Optional, defaults to standard key
     },
     gaana: {
-      enabled: true,
+      enabled: false,
       streamQuality: 'high',
       playlistLoadLimit: 100,
       albumLoadLimit: 100,
@@ -298,7 +289,7 @@ export default {
       }
     },
     'google-tts': {
-      enabled: true,
+      enabled: false,
       language: 'en-US'
     },
     // Piper TTS Configuration
@@ -334,19 +325,6 @@ export default {
       ],
       fallbackSources: [
         'soundcloud',
-        'deezer',
-        'jiosaavn',
-        'qobuz',
-        'gaana',
-        'vkmusic',
-        'yandexmusic',
-        'audiomack',
-        'bandcamp',
-        'audius',
-        'mixcloud',
-        'bilibili',
-        'bluesky',
-        'nicovideo'
       ], // Internal fallback chain when YouTube stream URL fails
       clients: {
         search: ['Android'], // Clients used for searching tracks
@@ -380,19 +358,19 @@ export default {
       }
     },
     instagram: {
-      enabled: true
+      enabled: false
     },
     kwai: {
-      enabled: true
+      enabled: false
     },
     twitch: {
-      enabled: true
+      enabled: false
     },
     spotify: {
       enabled: true,
       clientId: '',
       clientSecret: '',
-      externalAuthUrl: 'http://get.1lucas1apk.fun/spotify/gettoken', // URL to external token provider (e.g. http://localhost:8080/api/token - use https://github.com/topi314/spotify-tokener or https://github.com/1Lucas1apk/gettoken)
+      externalAuthUrl: 'https://github.com/topi314/spotify-tokener', // URL to external token provider (e.g. http://localhost:8080/api/token - use https://github.com/topi314/spotify-tokener or https://github.com/1Lucas1apk/gettoken | http://get.1lucas1apk.fun/spotify/gettoken)
       market: 'US',
       playlistLoadLimit: 1, // 0 means no limit (loads all tracks), 1 = 100 tracks, 2 = 100 and so on!
       playlistPageLoadConcurrency: 10, // How many pages to load simultaneously
@@ -413,7 +391,7 @@ export default {
       allowExplicit: true
     },
     audius: {
-      enabled: true,
+      enabled: false,
       appName: '',
       apiKey: '', // go to https://audius.co/settings and create an app and paste the app name and api stuff into here.
       apiSecret: '',
@@ -437,35 +415,35 @@ export default {
       remoteTokenUrl: 'https://get.1lucas1apk.fun/pandora/gettoken' // URL to a remote provider that returns { success: true, authToken: "...", csrfToken: "...", expires_in_seconds: ... } //https://github.com/1Lucas1apk/gettoken
     },
     nicovideo: {
-      enabled: true
+      enabled: false
     },
     reddit: {
-      enabled: true
+      enabled: false
     },
     tumblr: {
-      enabled: true
+      enabled: false
     },
     twitter: {
-      enabled: true
+      enabled: false
     },
     qobuz: {
-      enabled: true,
+      enabled: false,
       userToken: '', // (optional) get from play.qobuz.com in browser devtools -> Application -> Local Storage -> localuser -> token
       formatId: '5', // 5 = MP3 320kbps, 6 = FLAC (requires Studio subscription), 27 = Hi-Res FLAC
       allowExplicit: true
     },
     lastfm: {
-      enabled: true,
+      enabled: false,
       apiKey: '' // You can get the api key from: https://www.last.fm/api/account/create
     },
     netease: {
-      enabled: true
+      enabled: false
     },
     letrasmus: {
-      enabled: true
+      enabled: false
     },
     yandexmusic: {
-      enabled: true,
+      enabled: false,
       accessToken: '',
       allowUnavailable: false,
       allowExplicit: true,
@@ -479,13 +457,13 @@ export default {
       }
     },
     monochrome: {
-      enabled: true,
+      enabled: false,
       instances: [], // (optional) list of API instances
       streamingInstances: [], // (optional) list of streaming instances
       quality: 'HI_RES_LOSSLESS' // HI_RES_LOSSLESS, LOSSLESS, HIGH, LOW
     },
     googledrive: {
-      enabled: true
+      enabled: false
     }
   },
   lyrics: {
