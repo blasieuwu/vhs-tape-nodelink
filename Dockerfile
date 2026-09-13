@@ -28,7 +28,6 @@ COPY --from=builder /app/node_modules ./node_modules
 # Copy the rest of the application source code
 # This includes the 'src' directory, default config, and package files for runtime information.
 COPY src/ ./src/
-COPY config.default.js ./config.default.js
 COPY config.js ./config.js
 COPY package.json ./package.json
 
